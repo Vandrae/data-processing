@@ -23,5 +23,16 @@ public class Program {
         System.out.print("Enter a name (First or Last) : ");
         String nameSearch = input.nextLine();
 
+        List<Person> searchMatch = new ArrayList<>();
+
+        for (Person person:people){
+            if (nameSearch.equalsIgnoreCase(person.getFirstName()) || nameSearch.equalsIgnoreCase(person.getLastName())){
+            searchMatch.add(person);
+
+            }
+        }
+        for (Person person:searchMatch) {
+            System.out.println(person.getFirstName() + " " + person.getLastName());
+        }
     }
 }
