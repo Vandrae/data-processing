@@ -24,7 +24,7 @@ public class Program {
         String nameSearch = input.nextLine();
 
         List<Person> searchMatch = new ArrayList<>();
-
+        //ability to ask for more than 1 name
         for (Person person:people){
             if (nameSearch.equalsIgnoreCase(person.getFirstName()) || nameSearch.equalsIgnoreCase(person.getLastName())){
             searchMatch.add(person);
@@ -34,5 +34,13 @@ public class Program {
         for (Person person:searchMatch) {
             System.out.println(person.getFirstName() + " " + person.getLastName());
         }
+
+        double total = 0;
+        for (Person person:people){
+            total += person.getAge();
+
+        }
+        total /= people.size();
+        System.out.println("The average age of everyone on the list is: " + total);
     }
 }
