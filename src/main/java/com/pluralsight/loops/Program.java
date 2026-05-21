@@ -1,8 +1,11 @@
 package com.pluralsight.loops;
 
+import com.pluralsight.streams.Person;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Program {
     public static void main(String[] args) {
@@ -23,14 +26,13 @@ public class Program {
         System.out.print("Enter a name (First or Last) : ");
         String nameSearch = input.nextLine();
 
-        List<Person> searchMatch = new ArrayList<>();
+//        List<Person> searchMatch = new ArrayList<>();
         //ability to ask for more than 1 name
-        for (Person person:people){
-            if (nameSearch.equalsIgnoreCase(person.getFirstName()) || nameSearch.equalsIgnoreCase(person.getLastName())){
-            searchMatch.add(person);
+        List<Person> searchMatch = people.stream()
+                .filter(person -> nameSearch.equalsIgnoreCase(person.getFirstName()) ||
+                        nameSearch.equalsIgnoreCase(person.getLastName()))
+                .toList();
 
-            }
-        }
         for (Person person:searchMatch) {
             System.out.println(person.getFirstName() + " " + person.getLastName());
         }
